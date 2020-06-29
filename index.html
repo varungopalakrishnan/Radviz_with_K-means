@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>RadViz for winequality and Iris Dataset</title>
+    <link rel="stylesheet" type="text/css" href="./libs/bootstrap.min.css" />
+
+    <style type="text/css">
+      #content {
+        margin-top: 35px;
+        height: 90vh;
+        border-bottom: 1px solid #eee;
+      }
+      #content .col-xs-8 {
+        height: 85vh;
+        overflow: auto;
+      }
+      #content .col-xs-4 {
+        border-right: 1px solid #eee;
+      }
+
+      #data-table {
+        font-family: "Helvetica Neue";
+        font-size: 16px;
+        overflow: auto;
+        height: 85vh;
+      }
+
+      .table-header {
+        background-color: #ccc;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="col-xs-12">
+        <div id="radviz">
+          <div
+            class="radviz-title"
+            style="font-size: 16px; font-family: 'Muli', 'Helvetica', Arial, sans-serif; font-weight: bold; color:Tomato; margin-top: 10px"
+          >
+            RadViz Visualization
+            <div>
+              <button
+                id="resetRadViz"
+                onclick="resetRadViz()"
+                style="color:#000000"
+              >
+                Reset
+              </button>
+            </div>
+            <div style="color: rgb(0, 0, 0) ; margin-top: 10px">
+              <select id="dropdown">
+                <option value="Red">Select Dataset...</option>
+                <option value="Red">Winequality-Red</option>
+                <option value="White">Winequality-White</option>
+                <option value="Iris">Iris</option>
+              </select>
+              <select id="dropdown_cluster">
+                <option value="2">Select number of clusters...</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+              </select>
+              <input type="button" onclick="getIndex()" value="Radviz" />
+              <input
+                type="button"
+                onclick="getCluster()"
+                value="KMeans-Cluster"
+              />
+            </div>
+            <div style="color: rgb(0, 0, 0);margin-top: 10px">
+              <p>&#10149; Select cluster (or) class-based colors:</p>
+              <div>
+                <input
+                  type="radio"
+                  id="cluster"
+                  name="selectColor"
+                  value="cluster Color"
+                />
+                <label for="cluster">cluster color &nbsp;&nbsp;&nbsp;</label>
+
+                <input
+                  type="radio"
+                  id="class"
+                  name="selectColor"
+                  value="class-based color"
+                />
+                <label for="class">class-based color</label>
+              </div>
+              <div>
+                <button type="submit" onclick="colorScheme()">Submit</button>
+              </div>
+            </div>
+            <div
+              style="margin-left: 200px; margin-top: 10px;text-decoration: underline;"
+            >
+              Opacity Control
+            </div>
+            <div style="margin-left: 150px; margin-top: 2px;">
+              <span class="leftlabel" style="margin-left: 50px">0</span>
+              <input
+                id="opacity2"
+                type="range"
+                min="0"
+                max="100"
+                value="100"
+                style="width: 350px; margin-right: 10px; margin-left: 50px; "
+              />
+              <span class="rightlabel" style="margin-left: 400px;">100</span>
+            </div>
+            <div
+              id="legend"
+              class="legend"
+              style="margin-left: 650px; color:Tomato; text-decoration: underline"
+            >
+              Legends
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./libs/d3.min.js" defer></script>
+    <script src="./src/RadViz.js" defer></script>
+    <script src="index.js" defer></script>
+  </body>
+</html>
